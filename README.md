@@ -4,7 +4,7 @@ An AE script to help generate css sprite animation from AE comps.
 ![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporter.png)  
 </br>
 # How to Install:
-Download the [`JSX file`](https://github.com/bigxixi/CSS-Sprite-Exporter/blob/master/CSS-Sprite-Exporter.jsx).</br>
+Download the [`JSX file`](https://raw.github.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
 Run AE, click `File`->`Script`->`Run Script File...` and choose the `CSS-Sprite-Exporter.jsx` file.  
 </br>
 Or you can copy the `CSS-Sprite-Exporter.jsx` to your AE script folder:
