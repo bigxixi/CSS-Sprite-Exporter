@@ -38,3 +38,7 @@ Thank you very much!
 
 [<img src="http://bigxixi.com/donate/index.hyperesources/wechat.png" width="30%" height="30%">](http://bigxixi.com/donate)
 [<img src="http://bigxixi.com/donate/index.hyperesources/alipay.jpg" width="30%" height="30%">](http://bigxixi.com/donate)  
+
+# License 
+
+[MIT License](https://zenorocha.mit-license.org/) © Zeno Rocha
