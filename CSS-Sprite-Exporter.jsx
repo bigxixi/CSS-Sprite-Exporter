@@ -304,14 +304,15 @@
                                 "    border-radius: 4px;\n" + 
                                 "    display: inline-block;\n" + 
                                 "    cursor: pointer;\n" + 
-                                "	width: 50px;\n" + 
-                                "	height: 30px;\n" + 
-                                "	margin: 0px 0px 5px 10px;\n" + 
+                                "	 width: 50px;\n" + 
+                                "	 height: 30px;\n" + 
+                                "	 margin: 0px 0px 5px 10px;\n" + 
                                 "}\n" + 
                                 ".controlPad{\n" + 
                                 "	position: absolute;\n" + 
                                 "	border-radius: 4px;\n" + 
-                                "	left: 70%;\n" + 
+                                "	left: 65%;\n" + 
+                                "   transform: scale(0.85,0.85);\n" +
                                 "	bottom:5%;\n" + 
                                 "}\n" + 
                                 "#css-animtate{\n" + 
@@ -423,6 +424,7 @@
                                 "	top: 95%;\n" + 
                                 "	left: 50%;\n" + 
                                 "   width: 50%;\n" +
+                                "	text-align: center;\n" + 
                                 "	transform: translate(-50%, -50%);\n" + 
                                 "	margin: 0;\n" + 
                                 "	padding: 0;\n" + 
