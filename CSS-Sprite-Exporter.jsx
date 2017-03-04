@@ -116,7 +116,7 @@
 
             function GenerateSprite(){
                 var RQerr = "Render Error.";
-                var endmsg = "Done!";
+                var endmsg = "Done! Sprite saved at:";
                 var savetip = "save to...";
                 var osSlash;
                 if($.os.toLowerCase().indexOf("mac") == 0){
@@ -129,14 +129,13 @@
                 var oriH = oriComp.height;
                 var oriL = Number(oriComp.workAreaDuration).toFixed(2);
                 var oriR = oriComp.frameRate;
-                var oriName = oriComp.name;
                 var theLocation = File.saveDialog(savetip);
                 if(theLocation != null){
-                    var aniFolder = new Folder(theLocation.path+osSlash+oriName);
+                    var aniFolder = new Folder(theLocation.path+osSlash+theLocation.name);
                         aniFolder.create();
                     var imgFolder = new Folder(aniFolder.fsName+osSlash+"images");
                         imgFolder.create();
-                    var htmlName = decodeURIComponent(theLocation.name+".html")
+                    var htmlName = decodeURIComponent("show_page_"+theLocation.name+".html")
                     var imgPath = decodeURIComponent("images/"+theLocation.name+".png");
                         theLocation = decodeURIComponent(imgFolder.fsName+osSlash+theLocation.name+".png");
                     var htmlPath = decodeURIComponent(aniFolder.fsName+osSlash+"index.html");
