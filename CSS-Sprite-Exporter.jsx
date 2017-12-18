@@ -1,4 +1,5 @@
 //by bigxixi, contact at xixi@bigxixi.com
+//export css unit as percentage
 (function ALL(thisObj)
 {
 	var drawUI = UI(thisObj);
@@ -9,7 +10,7 @@
 		drawUI.layout.layout(true);
 	};
     	function UI(thisObj){
-            var version = "1.0";
+            var version = "1.1";
             var scriptName = "CSS Sprite Exporter";
             var Description = "Export CSS Sprite Animation   " + version;
             var HelpText = "This script can help generate css sprite animation from AE comps.\n" + 
@@ -107,6 +108,10 @@
                     alert("animation name error, check it.");
                     return;
                 }
+                if(oriW > limitW){
+                        var alertWH = "Max width is shorter then original width, please input again;";
+                        alert(alertWH);
+                    }
                 GenerateSprite();
             }
 
@@ -145,7 +150,7 @@
                     var framePosX=[],framePosY=[];
                     var skip = Number(skipFrame.text);
                     var rows,columns = 1;
-                    var limitW = limitH = maxWidth.text;
+                    var limitW = limitH = Number(maxWidth.text) + 1;
                     var imgIdName = idName.text;
                     var aniName = animationName.text;
                     var compR = Number(oriR/(skip+1)).toFixed(3);
@@ -187,7 +192,7 @@
                     }
 
                     var tempComp = app.project.items.addComp('TempComp',compW,compH,1,oriL,compR);
-                    tempComp.openInViewer();
+                        tempComp.openInViewer();
                     app.project.activeItem.layers.add(oriComp);
                     app.project.activeItem.layer(1).startTime = -Number(oriComp.workAreaStart).toFixed(2);
                     app.project.activeItem.layer(1).position.expression = posExp;
@@ -220,43 +225,45 @@
                     }
                     cssCodeAni += "   animation: "+aniName+" "+oriL+"s " +"steps(1) infinite;\n" +
                                 "}\n";
-
+                    var widthFixed = (oriW-compW == 0) ? compW : (oriW-compW);
+                    var heightFixed = (oriH-compH == 0) ? compH : (oriH-compH);
                     if(prefix1.value == true){
                         cssCodeKeys += "@-webkit-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -webkit-background-position: 0px 0px; }\n";
+                                    "\t0% { -webkit-background-position: 0% 0%; }\n";
+                        
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -webkit-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -webkit-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix2.value == true){
                         cssCodeKeys += "@-moz-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -moz-background-position: 0px 0px; }\n";
+                                    "\t0% { -moz-background-position: 0% 0%; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -moz-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -moz-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix3.value == true){
                         cssCodeKeys += "@-ms-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -ms-background-position: 0px 0px; }\n";
+                                    "\t0% { -ms-background-position: 0% 0%; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -ms-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -ms-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix4.value == true){
                         cssCodeKeys += "@-o-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -o-background-position: 0px 0px; }\n";
+                                    "\t0% { -o-background-position: 0% 0%; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -o-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -o-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }          
                     cssCodeKeys += "@keyframes "+aniName+" {\n" + 
-                                "\t0% { background-position: 0px 0px; }\n";
+                                "\t0% { background-position: 0% 0%; }\n";
                     for(var n=1;n<picCount;n++){
-                        cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
+                        cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
                     }
                     cssCodeKeys += "}\n";
 
@@ -603,7 +610,3 @@
 	}
 
 })(this);
-
-
-
-
