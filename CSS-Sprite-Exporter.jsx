@@ -273,7 +273,7 @@
                     htmlCode = "<!DOCTYPE html>\n" + 
                                 "<html>\n" + 
                                 "<head>\n" + 
-				"<title>'+imgIdName+'动画预览页面 by AE CSS Exporter</title>\n" + 
+				"<title>"+imgIdName+"动画预览页面 by AE CSS Exporter</title>\n" + 
                                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" + 
                                 "<meta http-equiv=\"X-UA-Compatible\" content=\"chrome=1,IE=edge\" />\n" + 
                                 "<style>\n" + 
