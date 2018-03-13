@@ -13,17 +13,15 @@
             var version = "1.0";
             var scriptName = "CSS Sprite Exporter";
             var Description = "AE合成直接导出CSS精灵图动画   " + version;
-            var HelpText = "This script can help generate css sprite animation from AE comps.\n" + 
-                            "How to use:\n" + 
-                            "1.Open a composition in AE.\n" + 
-                            "2.Run the script.\n" + 
-                            "3.Make some config if needed.\n" + 
-                            "4.Hit generate button.\n" + 
-                            "Then you will get an \"image\" folder whitch contants \n" + 
-                            "the sprite image(png format) and a html page to show the animation.\n" + 
-                            "You can copy the css code from the show page.\n" + 
-                            "Surport transparency.\n" + 
-                            "Feel free to contact me - xixi@bigxixi.com";
+            var HelpText = "本脚本可以将AE合成直接导出为CSS精灵图动画\n" + 
+                            "使用步骤:\n" + 
+                            "1.在AE中打开要导出的合成.\n" + 
+                            "2.运行脚本.\n" + 
+                            "3.在界面上根据需要做些设置.\n" + 
+                            "4.点击导出.\n" + 
+                            "将会生成一个文件夹，其中的 \"image\" 文件夹中保存着 \n" + 
+                            "导出的雪碧图(png格式)， 另外还有一个html文件用于预览动画和复制代码.\n\n" + 
+                            "有问题联系我 - xixi@bigxixi.com";
             //draw UI
             var win = (thisObj instanceof Panel) ? thisObj : new Window("palette",scriptName,undefined,{resizeable:false,});
 
@@ -60,7 +58,7 @@
 
 
             var pal2 = group2.add("panel");
-                pal2.text = "Configs";
+                pal2.text = "CSS样式设置";
                 pal2.orientation = "column";
                 pal2.alignChildren = "fill";
             var txt3 = pal2.add("statictext",undefined,"ID名:");
@@ -136,7 +134,7 @@
                         aniFolder.create();
                     var imgFolder = new Folder(aniFolder.fsName+osSlash+"images");
                         imgFolder.create();
-                    var htmlName = decodeURIComponent("show_page_"+theLocation.name+".html")
+                    var htmlName = decodeURIComponent("预览_"+theLocation.name+".html")
                     var imgPath = decodeURIComponent("images/"+theLocation.name+".png");
                         theLocation = decodeURIComponent(imgFolder.fsName+osSlash+theLocation.name+".png");
                     var htmlPath = decodeURIComponent(aniFolder.fsName+osSlash+"index.html");
@@ -204,7 +202,7 @@
 
                     //write css。
                     cssCodeAni = "#"+imgIdName+" {\n"+
-                                "	background-image: url('"+imgPath+"');\n" +
+                                "   background-image: url('"+imgPath+"');\n" +
                                 "   width: "+oriW+"px;\n" +
                                 "   height: "+oriH+ "px;\n";
                     if(prefix1.value == true){
@@ -275,6 +273,7 @@
                     htmlCode = "<!DOCTYPE html>\n" + 
                                 "<html>\n" + 
                                 "<head>\n" + 
+				"<title>'+imgIdName+'动画预览页面 by AE CSS Exporter</title>\n" + 
                                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" + 
                                 "<meta http-equiv=\"X-UA-Compatible\" content=\"chrome=1,IE=edge\" />\n" + 
                                 "<style>\n" + 
