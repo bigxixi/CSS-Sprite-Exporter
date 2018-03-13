@@ -1,43 +1,49 @@
 # CSS-Sprite-Exporter  
-An AE script to help generate css sprite animation from AE comps.  
-将AE动画导出为雪碧图动画的脚本。
-![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporter.png)  
+这个脚本可以把 AE 做的动画导出为 CSS 雪碧图动画( CSS Sprite Animation)并自动生成代码，做H5、网页动画也许用得着。
+
 </br>
-# How to Install:
-Download the [`JSX file`](https://raw.github.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
-Run AE, click `File`->`Script`->`Run Script File...` and choose the `CSS-Sprite-Exporter.jsx` file.  
+## 如何安装
+下载AE-Slicer.jsx 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
+打开AE, 点击 `文件`->`脚本`->`运行脚本文件...` 然后选择刚才下载的 `CSS-Sprite-Exporter.jsx`。    
 </br>
-Or you can copy the `CSS-Sprite-Exporter.jsx` to your AE script folder:
+或者可以复制 `CSS-Sprite-Exporter.jsx` 到AE的脚本文件夹:
 >**Windows:**  
->`C:\Program Files\Adobe\Adobe After Effects <version>\Support Files\Script\ScriptUI Panels\`  
+>`C:\Program Files\Adobe\Adobe After Effects <版本>\Support Files\Script\`  
 >**Mac:**  
->`/Applications/Adobe After Effects <version>/Scripts/ScriptUI Panels/`  
-Then you can run it from the AE Window menu.  
+>`/Applications/Adobe After Effects <版本>/Scripts/`
+
+</br>
+这样你就可以从 `文件`->`脚本` 中直接选择`CSS-Sprite-Exporter`了  
+
+[详细步骤点我](https://helpx.adobe.com/cn/after-effects/using/scripts.html)</br>
+
+然后就可以开始玩耍了:) 
 </br>
 
-#How to use:  
-1.Open a composition in AE.  
-2.Run the script.  
-3.Make some config if needed.  
-4.Hit generate button.  
+# 使用方法：
+1.下载 CSS-Sprite-Exporter.jsx 文件
+2.在 AE 中打开需要导出的动画
+3.运行 CSS-Sprite-Exporter.jsx ， 界面大概是这样
 
-Then you will get an "image" folder whitch contants the sprite image(png format) and a html page to show the animation.  
-You can copy the css code from the show page. Surport transparency.  
-I use [Clipboard.js](https://clipboardjs.com/) to make the "copy to clipboard" function.  
-(Use Chrome to run the html if the layout crashes.)  
+![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporter.png)  
+
+4.设置好参数导出，如果没有意外，就会帮你打开到该动画导出的文件夹
+5.打开预览_XXX.html 文件（建议用 chrome 打开），可以预览导出的动画， css 代码也可以从中复制。
+可以一键复制到，方便快捷（使用了 [Clipboard.js](https://clipboardjs.com/).  ）
 
 ![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporterDemo.gif)  
 
- 
-## Donation:
-Thank you very much!  
 
-[<img src="http://bigxixi.com/donate/index.hyperesources/paypal.png" width="30%" height="30%">](https://www.paypal.me/bigxixi/)  
 ## 求打赏:
 如果您觉得本插件好用，欢迎打赏，感谢您的支持！  
 
 [<img src="http://bigxixi.com/donate/index.hyperesources/wechat.png" width="30%" height="30%">](http://bigxixi.com/donate)
 [<img src="http://bigxixi.com/donate/index.hyperesources/alipay.jpg" width="30%" height="30%">](http://bigxixi.com/donate)  
+
+## Donation:
+Thank you very much!  
+
+[<img src="http://bigxixi.com/donate/index.hyperesources/paypal.png" width="30%" height="30%">](https://www.paypal.me/bigxixi/)  
 
 # License 
 
