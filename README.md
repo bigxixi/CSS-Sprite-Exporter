@@ -4,7 +4,7 @@
 </br>
 
 ## 如何安装
-下载AE-Slicer.jsx 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
+下载 `CSS-Sprite-Exporter.jsx` 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
 打开AE, 点击 `文件`->`脚本`->`运行脚本文件...` 然后选择刚才下载的 `CSS-Sprite-Exporter.jsx`。    
 </br>
 或者可以复制 `CSS-Sprite-Exporter.jsx` 到AE的脚本文件夹:
