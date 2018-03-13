@@ -1,5 +1,5 @@
 //by bigxixi, contact at xixi@bigxixi.com
-//export css unit as percentage
+//中文版
 (function ALL(thisObj)
 {
 	var drawUI = UI(thisObj);
@@ -10,9 +10,9 @@
 		drawUI.layout.layout(true);
 	};
     	function UI(thisObj){
-            var version = "1.1";
+            var version = "1.0";
             var scriptName = "CSS Sprite Exporter";
-            var Description = "Export CSS Sprite Animation   " + version;
+            var Description = "AE合成直接导出CSS精灵图动画   " + version;
             var HelpText = "This script can help generate css sprite animation from AE comps.\n" + 
                             "How to use:\n" + 
                             "1.Open a composition in AE.\n" + 
@@ -38,19 +38,19 @@
                 group1.alignChildren = "fill";
 
             var pal1 = group1.add("panel");
-                pal1.text = "Max Width(px):";
+                pal1.text = "最大宽度(单位：px):";
                 pal1.alignChildren = "fill";
             var maxWidth = pal1.add("edittext",undefined,5000);
 
             var pal3 = group1.add("panel");
-                pal3.text = "Web Compatibility";
+                pal3.text = "Web兼容性";
                 pal3.orientation = "column";
                 pal3.alignChildren = "fill";
-            var prefixALL = pal3.add("checkbox",undefined,"add all prefixs");
-            var prefix1 = pal3.add("checkbox",undefined,"add '-webkit-' prefix");
-            var prefix2 = pal3.add("checkbox",undefined,"add '-moz-' prefix");
-            var prefix3 = pal3.add("checkbox",undefined,"add '-ms-' prefix");
-            var prefix4 = pal3.add("checkbox",undefined,"add '-o-' prefix");
+            var prefixALL = pal3.add("checkbox",undefined,"添加所有前缀");
+            var prefix1 = pal3.add("checkbox",undefined,"添加 '-webkit-' 前缀");
+            var prefix2 = pal3.add("checkbox",undefined,"添加 '-moz-' 前缀");
+            var prefix3 = pal3.add("checkbox",undefined,"添加 '-ms-' 前缀");
+            var prefix4 = pal3.add("checkbox",undefined,"添加 '-o-' 前缀");
             
 
             var group2 = group0.add("group");
@@ -63,17 +63,17 @@
                 pal2.text = "Configs";
                 pal2.orientation = "column";
                 pal2.alignChildren = "fill";
-            var txt3 = pal2.add("statictext",undefined,"ID Name:");
+            var txt3 = pal2.add("statictext",undefined,"ID名:");
             var idName = pal2.add("edittext",undefined,"mySprite");
-            var txt4 = pal2.add("statictext",undefined,"Animation Name:");
+            var txt4 = pal2.add("statictext",undefined,"动画名:");
             var animationName = pal2.add("edittext",undefined,"myAnimation");
-            var txt5 = pal2.add("statictext",undefined,"Skip Frames:");
+            var txt5 = pal2.add("statictext",undefined,"跳帧:");
             var skipFrame = pal2.add("edittext",undefined,0);
 
             var btnGroup = group2.add("group");
                 btnGroup.orientation = "row";
-            var btn1 = btnGroup.add("button",undefined,"Generate");
-            var btn2 = btnGroup.add("button",undefined,"Help");
+            var btn1 = btnGroup.add("button",undefined,"生成");
+            var btn2 = btnGroup.add("button",undefined,"帮助");
             
             //functions
             prefixALL.onClick = function(){
@@ -87,31 +87,27 @@
 
             btn1.onClick = function(){
                 if(!app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY")){
-                    alert("Please check this option:\n'Preferences->General->Allow Scripts to Write Files and Access Network'");
+                    alert("请勾选 ‘首选项’->'常规'->'允许脚本写入文件和访问网络'。");
                     app.executeCommand(2359);
-                    alert("Please rerun the script.");
+                    alert("请重新运行脚本。");
                     return;
                 }
                 if(checkInput(maxWidth.text)[0] == false){
-                    alert("Max width input error, check it.");
+                    alert("最大宽度输入，请检查。");
                     return;
                 }
                 if(skipFrame.text != 0 && checkInput(skipFrame.text)[0] == false){
-                    alert("SkipFrame value input error, check it.");
+                    alert("跳帧输入错误，请检查");
                     return;
                 }
                 if(checkInput(idName.text)[1] == false){
-                    alert("id name error, check it.");
+                    alert("id名输入错误，请检查");
                     return;
                 }
                 if(checkInput(animationName.text)[1] == false){
-                    alert("animation name error, check it.");
+                    alert("动画名输入错误，请检查");
                     return;
                 }
-                if(oriW > limitW){
-                        var alertWH = "Max width is shorter then original width, please input again;";
-                        alert(alertWH);
-                    }
                 GenerateSprite();
             }
 
@@ -120,9 +116,9 @@
             }
 
             function GenerateSprite(){
-                var RQerr = "Render Error.";
-                var endmsg = "Done! Sprite saved at:";
-                var savetip = "save to...";
+                var RQerr = "渲染错误！";
+                var endmsg = "导出完成！资源存放在：";
+                var savetip = "保存到...";
                 var osSlash;
                 if($.os.toLowerCase().indexOf("mac") == 0){
                     osSlash = "/";
@@ -150,7 +146,7 @@
                     var framePosX=[],framePosY=[];
                     var skip = Number(skipFrame.text);
                     var rows,columns = 1;
-                    var limitW = limitH = Number(maxWidth.text) + 1;
+                    var limitW = limitH = maxWidth.text;
                     var imgIdName = idName.text;
                     var aniName = animationName.text;
                     var compR = Number(oriR/(skip+1)).toFixed(3);
@@ -165,13 +161,13 @@
                         }
                     //calculate the size of the final img asset.
                     if((oriW<limitW) && (compW > limitW)){
-                        var alertWH = "The picture is warped due to the max width.";
+                        var alertWH = "根据最大宽度限制，图片已做折行处理";
                         for(var j=0;j<compR*oriL;j++){
                             if((j+1)*oriW>limitW){
                                 columns = j;
                                 rows = Math.ceil(Math.ceil(oriL*compR)/j);
                                 if(oriH*rows>limitH){
-                                    alertWH = "Your are generating a large pic, becareful!";
+                                    alertWH = "导出的精灵图尺寸会很大哦。";
                                 }
                                 alert(alertWH);
                                 break;
@@ -192,7 +188,7 @@
                     }
 
                     var tempComp = app.project.items.addComp('TempComp',compW,compH,1,oriL,compR);
-                        tempComp.openInViewer();
+                    tempComp.openInViewer();
                     app.project.activeItem.layers.add(oriComp);
                     app.project.activeItem.layer(1).startTime = -Number(oriComp.workAreaStart).toFixed(2);
                     app.project.activeItem.layer(1).position.expression = posExp;
@@ -225,45 +221,43 @@
                     }
                     cssCodeAni += "   animation: "+aniName+" "+oriL+"s " +"steps(1) infinite;\n" +
                                 "}\n";
-                    var widthFixed = (oriW-compW == 0) ? compW : (oriW-compW);
-                    var heightFixed = (oriH-compH == 0) ? compH : (oriH-compH);
+
                     if(prefix1.value == true){
                         cssCodeKeys += "@-webkit-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -webkit-background-position: 0% 0%; }\n";
-                        
+                                    "\t0% { -webkit-background-position: 0px 0px; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -webkit-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -webkit-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix2.value == true){
                         cssCodeKeys += "@-moz-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -moz-background-position: 0% 0%; }\n";
+                                    "\t0% { -moz-background-position: 0px 0px; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -moz-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -moz-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix3.value == true){
                         cssCodeKeys += "@-ms-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -ms-background-position: 0% 0%; }\n";
+                                    "\t0% { -ms-background-position: 0px 0px; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -ms-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -ms-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }
                     if(prefix4.value == true){
                         cssCodeKeys += "@-o-keyframes "+aniName+" {\n" + 
-                                    "\t0% { -o-background-position: 0% 0%; }\n";
+                                    "\t0% { -o-background-position: 0px 0px; }\n";
                         for(var n=1;n<picCount;n++){
-                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -o-background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
+                            cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { -o-background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
                         }
                         cssCodeKeys += "}\n";
                     }          
                     cssCodeKeys += "@keyframes "+aniName+" {\n" + 
-                                "\t0% { background-position: 0% 0%; }\n";
+                                "\t0% { background-position: 0px 0px; }\n";
                     for(var n=1;n<picCount;n++){
-                        cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { background-position: " + (100*framePosX[n]/widthFixed) + "% " + (100*framePosY[n]/heightFixed) +"%; }\n";
+                        cssCodeKeys += "\t" + Number(n/(picCount-1)*100).toFixed(2) + "% { background-position: " + framePosX[n] + "px " + framePosY[n] +"px; }\n";
                     }
                     cssCodeKeys += "}\n";
 
@@ -456,7 +450,7 @@
                                 "		document.getElementById('BGtransparent').style.backgroundImage = img;\n" + 
                                 "		var w=document.getElementById('rawIMG').width;\n" + 
                                 "		var h=document.getElementById('rawIMG').height;\n" + 
-                                "		var text=\"Image size: \"+w+\"(w) X \"+h+\"(h)px.\"+\"  Click black matt to close.\";\n" + 
+                                "		var text=\"图片尺寸: \"+w+\"(w) X \"+h+\"(h)px.\"+\"  点击蒙层返回。\";\n" + 
                                 "		document.getElementById('dsp').innerHTML = text;\n" + 
                                 "		if(w>=h){\n" + 
                                 "			document.getElementById('rawIMG').style.width=\"80%\";\n" + 
@@ -479,7 +473,7 @@
                                 "			document.body.style.backgroundImage = \"none\";\n" + 
                                 "			document.body.style.backgroundColor = theColor;\n" + 
                                 "		}else{\n" + 
-                                "			alert(\"Backgroupd color error.\");\n" + 
+                                "			alert(\"背景设置错误。\");\n" + 
                                 "		}\n" + 
                                 "	}\n" + 
                                 "	function showRawImg(){\n" + 
@@ -504,26 +498,26 @@
                                 "</head>\n" + 
                                 "<body>\n" + 
                                 "<div>\n" + 
-                                "	<div class=\"playground\" id='"+imgIdName+"' onClick=\"showRawImg()\" style=\"cursor: pointer;\" title=\"Click to review RAW image.\"></div>\n" + 
+                                "	<div class=\"playground\" id='"+imgIdName+"' onClick=\"showRawImg()\" style=\"cursor: pointer;\" title=\"点击查看精灵图\"></div>\n" + 
                                 "	<div class=\"controlPad\" style=\"background-color: lightgrey;width: 500px;\">\n" + 
                                 "		<div style=\"height: 10px;\"></div>\n" + 
-                                "		<p style=\"display: inline;\">Animation Parameter:</p>\n" + 
+                                "		<p style=\"display: inline;\">CSS样式代码:</p>\n" + 
                                 "		<button class=\"btn\" data-clipboard-action=\"copy\" data-clipboard-target=\"#css-animtate\" style=\"margin-top:0;\">\n" + 
-                                "			Copy to clipboard\n" + 
+                                "			一键复制到剪贴板\n" + 
                                 "		</button>\n" + 
                                 "		<textarea id=\"css-animtate\" spellcheck=\"false\">\n"+cssCodeAni+"\n</textarea>\n" + 
-                                "		<p style=\"display: inline;\">Keyframes:</p>\n" + 
+                                "		<p style=\"display: inline;\">keyframe动画代码:</p>\n" + 
                                 "		<button class=\"btn\" data-clipboard-action=\"copy\" data-clipboard-target=\"#css-keyframes\" style=\"margin-top:0;\">\n" + 
-                                "			Copy to clipboard\n" + 
+                                "			一键复制到剪贴板\n" + 
                                 "		</button>\n" + 
                                 "		<textarea id=\"css-keyframes\" spellcheck=\"false\">\n"+cssCodeKeys+"\n</textarea>\n" + 
-                                "		<p>Backgroupd Preview Color:</p>\n" + 
+                                "		<p>预览背景颜色:</p>\n" + 
                                 "		<div id=\"BGColoerControlBG\">\n" + 
                                 "		<button class=\"changeBG\" id=\"BGblack\" onclick=\"changeStyle(this)\"></button>\n" + 
                                 "		<button class=\"changeBG\" id=\"BGwhite\" onclick=\"changeStyle(this)\"></button>\n" + 
                                 "		<button class=\"changeBG\" id=\"BGtransparent\" onclick=\"changeStyle(this)\"></button>\n" + 
-                                "		<textarea spellcheck=\"false\" class=\"changeBG\" id=\"colorInput\" placeholder=\"Or Input here. e.g. #FFFFFF\" onkeyup=\"getColor(this)\"></textarea>\n" + 
-                                "		<button class=\"changeBG\" id=\"setColor\" onclick=\"changeStyle(this)\">set</button>\n" + 
+                                "		<textarea spellcheck=\"false\" class=\"changeBG\" id=\"colorInput\" placeholder=\"或者输入色值，格式： #FFFFFF\" onkeyup=\"getColor(this)\"></textarea>\n" + 
+                                "		<button class=\"changeBG\" id=\"setColor\" onclick=\"changeStyle(this)\">设置</button>\n" + 
                                 "		</div>\n" + 
                                 "	</div>\n" + 
                                 "</div>\n" + 
@@ -610,3 +604,7 @@
 	}
 
 })(this);
+
+
+
+
