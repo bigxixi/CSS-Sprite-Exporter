@@ -21,16 +21,16 @@
 然后就可以开始玩耍了:) 
 </br>
 
-# 使用方法：
-1.下载 CSS-Sprite-Exporter.jsx 文件
-2.在 AE 中打开需要导出的动画
-3.运行 CSS-Sprite-Exporter.jsx ， 界面大概是这样
+## 使用方法：
+1.下载 CSS-Sprite-Exporter.jsx 文件  
+2.在 AE 中打开需要导出的动画  
+3.运行 CSS-Sprite-Exporter.jsx ， 界面大概是这样  
 
 ![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporter.png)  
 
-4.设置好参数导出，如果没有意外，就会帮你打开到该动画导出的文件夹
-5.打开预览_XXX.html 文件（建议用 chrome 打开），可以预览导出的动画， css 代码也可以从中复制。
-可以一键复制到，方便快捷（使用了 [Clipboard.js](https://clipboardjs.com/).  ）
+4.设置好参数导出，如果没有意外，就会帮你打开到该动画导出的文件夹  
+5.打开预览_XXX.html 文件（建议用 chrome 打开），可以预览导出的动画， css 代码也可以从中复制。  
+可以一键复制到，方便快捷（使用了 [Clipboard.js](https://clipboardjs.com/).  ）  
 
 ![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporterDemo.gif)  
 
