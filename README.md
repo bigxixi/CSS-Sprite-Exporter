@@ -4,7 +4,7 @@
 </br>
 
 ## 如何安装
-下载 `CSS-Sprite-Exporter.jsx` 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
+下载 `CSS-Sprite-Exporter.jsx` 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/chinese/CSS-Sprite-Exporter.jsx).</br>
 打开AE, 点击 `文件`->`脚本`->`运行脚本文件...` 然后选择刚才下载的 `CSS-Sprite-Exporter.jsx`。    
 </br>
 或者可以复制 `CSS-Sprite-Exporter.jsx` 到AE的脚本文件夹:
@@ -26,13 +26,13 @@
 2.在 AE 中打开需要导出的动画  
 3.运行 CSS-Sprite-Exporter.jsx ， 界面大概是这样  
 
-![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporter.png)  
+![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/ui_cn.png)  
 
 4.设置好参数导出，如果没有意外，就会帮你打开到该动画导出的文件夹  
 5.打开预览_XXX.html 文件（建议用 chrome 打开），可以预览导出的动画， css 代码也可以从中复制。  
 可以一键复制到，方便快捷（使用了 [Clipboard.js](https://clipboardjs.com/).  ）  
 
-![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/cssSpriteExporterDemo.gif)  
+![](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/CSS-Sprite-Exporter/demo_cn.gif)  
 
 
 ## 求打赏:
