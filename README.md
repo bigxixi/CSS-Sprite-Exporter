@@ -2,6 +2,7 @@
 这个脚本可以把 AE 做的动画导出为 CSS 雪碧图动画( CSS Sprite Animation)并自动生成代码，做H5、网页动画也许用得着。
 
 </br>
+
 ## 如何安装
 下载AE-Slicer.jsx 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/CSS-Sprite-Exporter/master/CSS-Sprite-Exporter.jsx).</br>
 打开AE, 点击 `文件`->`脚本`->`运行脚本文件...` 然后选择刚才下载的 `CSS-Sprite-Exporter.jsx`。    
